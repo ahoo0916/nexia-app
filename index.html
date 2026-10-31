@@ -3,22 +3,45 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-title" content="NEXIA">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#102A43">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>NEXIA</title>
 
+  <link rel="apple-touch-icon"
+        sizes="180x180"
+        href="./nexia-icon-180.png">
 
-<link rel="apple-touch-icon" sizes="180x180" href="./nexia-icon-180.png?v=1">
-  
+  <meta name="apple-mobile-web-app-capable"
+        content="yes">
+  <meta name="apple-mobile-web-app-title"
+        content="NEXIA">
+  <meta name="apple-mobile-web-app-status-bar-style"
+        content="default">
+</head>
 
 <body>
-  <p>NEXIAを起動しています...</p>
+  <h2>NEXIA</h2>
+  <p id="message">ホーム画面に追加してご利用ください。</p>
+
+  <a id="openLink" href="#">
+    NEXIAを開く
+  </a>
+
   <script>
-    window.location.replace(
-      "https://script.google.com/macros/s/AKfycbzWve4knuu2ZfX2H0rGTw32yud4H2vO_v0UrEfPL3lqA8IRI13rzKunnuo0hOIIrBHx/exec"
-    );
+    const gasUrl =
+      "https://script.google.com/macros/s/AKfycbzWve4knuu2ZfX2H0rGTw32yud4H2vO_v0UrEfPL3lqA8IRI13rzKunnuo0hOIIrBHx/exec";
+
+    document.getElementById("openLink").href = gasUrl;
+
+    const standalone =
+      window.navigator.standalone === true ||
+      window.matchMedia("(display-mode: standalone)").matches;
+
+    if (standalone) {
+      document.getElementById("message").textContent =
+        "NEXIAを起動しています...";
+      window.location.replace(gasUrl);
+    }
   </script>
 </body>
-
-
+</html>
